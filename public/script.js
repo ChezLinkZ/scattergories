@@ -51,6 +51,9 @@ function startGame() {
   $("#timer").css("opacity", 1);
   title.css("opacity", 1);
   timeLeft = timeLimit;
+  setTimeout(() => {
+    $("#middle-blur").css("display", "none");
+  }, 1000);
   requestAnimationFrame(countDown);
 }
 
@@ -106,6 +109,7 @@ function countDown() {
     $("#timer").html("<span>Time's up!</span>");
     $("#reload-button").addClass("pulse");
   }
+  $("#time-display").text(timeToDisplay(timeLeft + 1));
 }
 
 function setTime(minutes) {
@@ -119,3 +123,15 @@ $(".time-input").on("click", function (e) {
   console.log(time);
   setTime(time);
 });
+
+function timeToDisplay(time) {
+  let seconds = Math.floor((time / 60) % 60);
+  if (seconds < 10 && Math.floor(time / 60) > 10) {
+    seconds = `0${seconds}`;
+  }
+  if (time < 3600) {
+    return `${seconds}s`;
+  } else {
+    return `${Math.floor(time / 3600)}:${seconds}`;
+  }
+}
