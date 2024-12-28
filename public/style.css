@@ -91,6 +91,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   border: solid 1.5px #3D3D3D;
   border-radius: 24px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 #timer-bar {
@@ -182,4 +184,37 @@ body {
 
 .pulse {
   animation: pulse 1s ease-in-out infinite;
+}
+
+.time-input {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: solid 1.5px #3D3D3D;
+  border-radius: 24px;
+  padding: 24px;
+  font-size: 24px;
+  aspect-ratio: 1 / 1;
+  height: fit-content;
+  width: 96px;
+  transition: all 0.4s ease-in-out;
+  margin: 0px 6px;
+}
+
+#time-input-container {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: TranslateX(-50%);
+  display: flex;
+  flex-direction: row;
+}
+
+#time-input-container span {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: TranslateX(-50%);
+  font-size: 24px;
+  width: fit-content;
+  white-space: nowrap;
+  display: block;
 }
