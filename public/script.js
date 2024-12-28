@@ -2,11 +2,12 @@ var prompts = {};
 var localStorage = window.localStorage;
 const container = $("#prompts-container");
 const title = $("#title");
-const time = JSON.parse(window.localStorage.time) || 2;
-const timeLimit = time * 3600;
 if (!localStorage.time) {
   localStorage.time = 2;
 }
+const time = JSON.parse(window.localStorage.time);
+const timeLimit = time * 3600;
+
 var timeLeft = timeLimit; // frames (at 60 fps, {timeLimit} minutes)
 const timerBar = $("#timer-bar");
 const updateTimer = (width) => $("#timer-bar").css("width", width + "%");
