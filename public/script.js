@@ -36,23 +36,33 @@ function startGame() {
   requestAnimationFrame(countDown);
 }
 
+function getRandomItems(array, count = 10) {
+  if (array.length <= count) {
+    return array; // Return the entire array if it has fewer items than the count
+  }
+
+  const shuffled = [...array].sort(() => Math.random() - 0.5); // Shuffle a copy of the array
+  return shuffled.slice(0, count); // Return the first `count` items
+}
+
 
 
 function randomCategory() {
-  const key = Object.keys(prompts)[Math.random() * Object.keys(prompts).length | 0];
-  let prompt = prompts[key];
-  var category = new Category(key, prompt);
-  return category;
+  let prompt = getRandomItems(prompts);
+  console.log(prompt)
+  return prompt;
 }
 
 function displayPrompts(category) {
   container.empty();
-  category.data.forEach(prompt => {
+  console.log(category)
+  category.forEach(prompt => {
+    console.log(prompt)
     const element = $("<span></span>");
     element.text(prompt);
     container.append(element);
   });
-  title.text(category.title);
+  title.text("Scattergories");
 }
 
 function displayRandomCategory() {
